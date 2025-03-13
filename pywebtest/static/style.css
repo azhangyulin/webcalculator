@@ -1,0 +1,103 @@
+/* 基础样式 */
+body {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.calculator-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 计算器显示区域 */
+.display {
+    height: 60px;
+    font-size: 24px;
+    text-align: right;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+/* 按钮布局 */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.btn-light {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+}
+
+.btn-light:hover {
+    background-color: #e9ecef;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+.btn-danger {
+    grid-column: span 4;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* 响应式设计 */
+@media (max-width: 576px) {
+    .calculator-container {
+        padding: 15px;
+    }
+    
+    .display {
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
