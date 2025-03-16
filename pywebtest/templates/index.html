@@ -1,56 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>科学计算器</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container calculator-container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">科学计算器</h1>
-                <div class="calculator">
-                    <input type="text" class="form-control display" id="display" disabled>
-                    <div class="buttons">
-                        <!-- 按钮布局 -->
-                        <button class="btn btn-secondary" onclick="clearDisplay()">C</button>
-                        <button class="btn btn-secondary" onclick="deleteLast()">DEL</button>
-                        <button class="btn btn-secondary" onclick="appendToDisplay('%')">%</button>
-                        <button class="btn btn-secondary" onclick="appendToDisplay('Math.sqrt(')">√</button>
-                        <button class="btn btn-warning" onclick="appendToDisplay('/')">/</button>
+{% extends "base.html" %}
 
-                        <button class="btn btn-light" onclick="appendToDisplay('7')">7</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('8')">8</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('9')">9</button>
-                        <button class="btn btn-warning" onclick="appendToDisplay('*')">*</button>
-
-                        <button class="btn btn-light" onclick="appendToDisplay('4')">4</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('5')">5</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('6')">6</button>
-                        <button class="btn btn-warning" onclick="appendToDisplay('-')">-</button>
-
-                        <button class="btn btn-light" onclick="appendToDisplay('1')">1</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('2')">2</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('3')">3</button>
-                        <button class="btn btn-warning" onclick="appendToDisplay('+')">+</button>
-
-                        <button class="btn btn-light" onclick="appendToDisplay('0')">0</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('.')">.</button>
-                        <button class="btn btn-light" onclick="appendToDisplay('(')">(</button>
-                        <button class="btn btn-light" onclick="appendToDisplay(')')">)</button>
-
-                        <button class="btn btn-danger" onclick="calculateResult()">=</button>
-                    </div>
-                </div>
-            </div>
+{% block content %}
+<div class="container welcome-container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>欢迎使用科学计算器</h1>
+            {% if current_user.is_authenticated %}
+                <p>您可以开始使用<a href="{{ url_for('calculator') }}">计算器</a></p>
+            {% else %}
+                <p>请先<a href="{{ url_for('login') }}">登录</a>或<a href="{{ url_for('register') }}">注册</a>以使用计算器</p>
+            {% endif %}
         </div>
     </div>
-
-    <script src="{{ url_for('static', filename='calculator.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}
