@@ -28,6 +28,20 @@ function calculateResult() {
     }
 }
 
+// 计算平方根
+function calculateSquareRoot() {
+    try {
+        const value = parseFloat(display.value);
+        if (value >= 0) {
+            display.value = Math.sqrt(value);
+        } else {
+            display.value = 'Error';
+        }
+    } catch (error) {
+        display.value = 'Error';
+    }
+}
+
 // 键盘支持
 document.addEventListener('keydown', (event) => {
     const key = event.key;
@@ -42,6 +56,8 @@ document.addEventListener('keydown', (event) => {
             calculateResult();
         } else if (key === 'Backspace') {
             deleteLast();
+        } else if (key === 's') {
+            calculateSquareRoot();
         } else {
             appendToDisplay(key);
         }
